@@ -1,0 +1,106 @@
+---
+import Container from "@/components/common/Container.astro";
+import {Image} from "astro:assets";
+import heroSocks from "@/assets/images/hero/lionsunHero-Banner.png";
+
+const benefits = [
+  {
+    title: "Fabricación propia",
+  },
+  {
+    title: "Venta por mayor y menor",
+  },
+  {
+    title: "Envíos a todo el Perú",
+  },
+  {
+    title: "Atención directa",
+  },
+];
+---
+
+<section
+  class="relative overflow-hidden bg-brand-950 text-white"
+  aria-labelledby="hero-title"
+>
+  <!-- Forma azul decorativa -->
+   <div
+        class="hero-brand-bg pointer-events-none absolute inset-y-0 right-0 hidden w-[64%] lg:block"
+        style="clip-path: polygon(14% 0, 100% 0, 100% 100%, 0 100%);"
+        aria-hidden="true"
+    ></div>
+
+  <!-- Imagen del producto como capa visual -->
+<div
+  class="pointer-events-none absolute right-0 top-0 bottom-20 z-10 hidden w-[58%] lg:block"
+>
+  <Image
+    src={heroSocks}
+    alt=""
+    class="h-full w-full object-contain object-right-top"
+    loading="eager"
+  />
+</div>
+
+<Container class="relative z-20">
+  <!-- Contenido principal -->
+  <div
+    class="flex min-h-[580px] items-center py-16 lg:w-[48%] lg:py-0 lg:-translate-x-8"
+    >
+   <div class="max-w-xl lg:-translate-x-16">
+      <p
+        class="mb-5 text-xs font-bold uppercase tracking-[0.3em] text-white/70"
+      >
+        Calidad que te acompaña
+      </p>
+
+      <h1
+        id="hero-title"
+        class="font-heading text-4xl font-black italic uppercase leading-[0.95] tracking-tight sm:text-5xl lg:text-[3.4rem] xl:text-6xl"
+      >
+        Medias hechas
+
+        <span class="mt-1 block text-accent-400 xl:whitespace-nowrap">
+          para tu día a día
+        </span>
+      </h1>
+
+      <p
+        class="mt-6 max-w-lg text-base leading-7 text-white/80 sm:text-lg"
+      >
+        Fabricamos y distribuimos medias para varón, dama y niños,
+        con variedad de diseños, colores y modelos para cada estilo
+        y necesidad.
+      </p>
+
+      <a
+        href="#productos"
+        class="mt-8 inline-flex items-center gap-3 rounded-md bg-white px-6 py-3.5 text-sm font-bold text-brand-950 transition duration-300 hover:-translate-y-0.5 hover:bg-neutral-100"
+      >
+        Ver productos
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Beneficios -->
+  <div
+    class="relative z-20 grid border-t border-white/15 sm:grid-cols-2 lg:grid-cols-4"
+  >
+    {
+      benefits.map((benefit) => (
+        <div class="flex min-h-20 items-center py-5 sm:px-5 sm:first:pl-0">
+          <span
+            class="mr-3 h-2 w-2 shrink-0 rounded-full bg-accent-400"
+            aria-hidden="true"
+          />
+
+          <p class="text-sm font-semibold text-white">
+            {benefit.title}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</Container>
+</section>

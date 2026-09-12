@@ -1,0 +1,71 @@
+---
+import Container from '@/components/common/Container.astro';
+
+const navigation = [
+  { label: "Productos", href: "#productos" },
+  { label: "Nosotros", href: "#nosotros" },
+  { label: "Mayoristas", href: "#mayoristas" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contacto", href: "#contacto" },
+];
+---
+
+
+<header class="border-b border-neutral-200 bg-white">
+  <Container class="flex h-20 items-center justify-between">
+
+    <!-- Logo -->
+    <a
+      href="/"
+      class="font-heading text-2xl font-black tracking-tight text-brand-950"
+      aria-label="LIONSUN - Inicio"
+    >
+      LIONSUN
+    </a>
+
+    <!-- Desktop navigation -->
+    <nav
+      class="hidden items-center gap-8 lg:flex"
+      aria-label="Navegación principal"
+    >
+      {
+        navigation.map((item) => (
+          <a
+            href={item.href}
+            class="text-sm font-semibold text-brand-950 transition-colors hover:text-accent-500"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Actions -->
+    <div class="flex items-center gap-4">
+      <a
+        href="#productos"
+        class="hidden text-brand-950 transition-colors hover:text-accent-500 sm:inline-flex"
+        aria-label="Buscar productos"
+      >
+        <span aria-hidden="true">⌕</span>
+      </a>
+
+      <a
+        href="#contacto"
+        class="hidden rounded-md bg-accent-500 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-accent-600 lg:inline-flex"
+      >
+        Cotizar por WhatsApp
+      </a>
+
+      <!-- Mobile menu: comportamiento después -->
+      <button
+        type="button"
+        class="inline-flex items-center justify-center text-brand-950 lg:hidden"
+        aria-label="Abrir menú"
+      >
+        <span class="text-2xl" aria-hidden="true">☰</span>
+      </button>
+    </div>
+
+  </Container>
+</header>

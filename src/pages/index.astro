@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AnnouncementBar from "@/components/common/AnnouncementBar.astro";
+import Header from "@/components/common/Header.astro";
+import Hero from "@/components/home/Hero.astro";
+
+---
+
+<BaseLayout
+  title="LIONSUN | Medias para mayoristas y venta directa"
+  description="Fabricamos y distribuimos medias para varón, dama y niños. Venta por mayor y menor con atención directa y envíos a todo el Perú."
+>
+  <AnnouncementBar />
+  <Header />
+
+  <main>
+    <Hero />
+  </main>
+</BaseLayout>
