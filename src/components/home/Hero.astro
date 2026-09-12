@@ -2,21 +2,26 @@
 import Container from "@/components/common/Container.astro";
 import {Image} from "astro:assets";
 import heroSocks from "@/assets/images/hero/lionsunHero-Banner.png";
+import Icon from "@/components/Icon.astro";
 
 const benefits = [
   {
     title: "Fabricación propia",
+    icon: "factory",
   },
   {
     title: "Venta por mayor y menor",
+    icon: "wholesale",
   },
   {
     title: "Envíos a todo el Perú",
+    icon: "shipping",
   },
   {
     title: "Atención directa",
+    icon: "support",
   },
-];
+] as const;
 ---
 
 <section
@@ -85,22 +90,22 @@ const benefits = [
 
   <!-- Beneficios -->
   <div
-    class="relative z-20 grid border-t border-white/15 sm:grid-cols-2 lg:grid-cols-4"
-  >
-    {
-      benefits.map((benefit) => (
-        <div class="flex min-h-20 items-center py-5 sm:px-5 sm:first:pl-0">
-          <span
-            class="mr-3 h-2 w-2 shrink-0 rounded-full bg-accent-400"
-            aria-hidden="true"
-          />
+  class="relative z-20 grid border-t border-white/15 sm:grid-cols-2 lg:grid-cols-4"
+>
+  {
+    benefits.map((benefit) => (
+      <div class="flex min-h-24 items-center gap-3 py-5 sm:px-5 sm:first:pl-0">
+        <Icon
+          name={benefit.icon}
+          class="h-8 w-8 shrink-0 text-accent-400"
+        />
 
-          <p class="text-sm font-semibold text-white">
-            {benefit.title}
-          </p>
-        </div>
-      ))
-    }
-  </div>
+        <p class="text-sm font-semibold leading-tight text-white">
+          {benefit.title}
+        </p>
+      </div>
+    ))
+  }
+</div>  
 </Container>
 </section>

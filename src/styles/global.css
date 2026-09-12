@@ -66,6 +66,11 @@
   --shadow-card:
     0 8px 30px rgb(3 24 47 / 8%);
 
+  /* Whatsapp*/
+
+  --color-whatsapp-500: #25d366;
+  --color-whatsapp-600: #1ebe5d;
+
 
     /* Hero */
 
@@ -104,6 +109,9 @@
   --color-accent-500: var(--accent-500);
   --color-accent-400: var(--accent-400);
   --color-accent-300: var(--accent-300);
+
+  --color-whatsapp-500: #25d366;
+  --color-whatsapp-600: #1ebe5d;
 }
 
 

@@ -1,0 +1,84 @@
+---
+interface Props {
+  name: "factory" | "wholesale" | "shipping" | "support";
+  class?: string;
+}
+
+const { name, class: className = "h-8 w-8" } = Astro.props;
+---
+
+{
+  name === "factory" && (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.7"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class={className}
+      aria-hidden="true"
+    >
+      <path d="M3 21h18" />
+      <path d="M5 21V9l5 3V8l5 3V5l4 2v14" />
+      <path d="M8 16h2M13 16h2M18 16h1" />
+    </svg>
+  )
+}
+
+{
+  name === "wholesale" && (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.7"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class={className}
+      aria-hidden="true"
+    >
+      <path d="M4 7h16l-1 13H5L4 7Z" />
+      <path d="M8 7a4 4 0 0 1 8 0" />
+      <path d="M9 12h6" />
+    </svg>
+  )
+}
+
+{
+  name === "shipping" && (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.7"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class={className}
+      aria-hidden="true"
+    >
+      <path d="M3 6h11v10H3V6Z" />
+      <path d="M14 10h4l3 3v3h-7" />
+      <circle cx="7" cy="18" r="2" />
+      <circle cx="18" cy="18" r="2" />
+    </svg>
+  )
+}
+
+{
+  name === "support" && (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.7"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class={className}
+      aria-hidden="true"
+    >
+      <path d="M4 5h16v11H9l-5 4V5Z" />
+      <path d="M8 10h8M8 13h5" />
+    </svg>
+  )
+}
