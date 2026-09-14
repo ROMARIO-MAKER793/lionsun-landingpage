@@ -1,0 +1,115 @@
+---
+import Container from "@/components/common/Container.astro";
+import CategoryCard from "@/components/home/CategoryCard.astro";
+
+const categories = [
+  {
+    title: "Varón",
+    description: "Deportivas, casuales y más",
+    href: "#",
+  },
+  {
+    title: "Dama",
+    description: "Comodidad y estilo",
+    href: "#",
+  },
+  {
+    title: "Niños",
+    description: "Para cada aventura",
+    href: "#",
+  },
+];
+---
+
+<section
+  id="categorias"
+  class="bg-white py-10 sm:py-12 lg:py-14"
+  aria-labelledby="categories-title"
+>
+  <Container>
+    <div
+      class="
+        flex flex-col gap-5
+        md:flex-row md:items-end md:justify-between
+      "
+    >
+      <div>
+        <p
+          class="
+            text-[11px] font-semibold uppercase
+            tracking-[0.28em] text-brand-700
+          "
+        >
+          Nuestras categorías
+        </p>
+
+        <h2
+          id="categories-title"
+          class="
+            mt-1.5
+            text-3xl font-extrabold uppercase
+            leading-[0.9] tracking-tight
+            text-brand-950
+            sm:text-4xl
+          "
+        >
+          Encuentra
+          <span class="block">tu estilo</span>
+        </h2>
+      </div>
+
+      <div class="md:pb-1 md:text-right">
+        <p class="text-xs leading-5 text-neutral-500 sm:text-sm">
+          Variedad de modelos para cada necesidad.
+        </p>
+
+        <a
+          href="#categorias"
+          class="
+            mt-1.5 inline-flex items-center gap-1.5
+            text-xs font-semibold text-accent-600
+            transition hover:text-accent-500
+            focus-visible:outline-2
+            focus-visible:outline-offset-4
+            focus-visible:outline-accent-500
+          "
+        >
+          Ver todas las categorías
+
+          <svg
+            viewBox="0 0 24 24"
+            class="size-3.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M6 12h12" />
+            <path d="m13 7 5 5-5 5" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <ul
+      class="
+        mx-auto mt-6
+        grid max-w-5xl grid-cols-1 gap-4
+        sm:grid-cols-2
+        lg:grid-cols-3
+      "
+    >
+      {
+        categories.map((category) => (
+          <CategoryCard
+            title={category.title}
+            description={category.description}
+            href={category.href}
+          />
+        ))
+      }
+    </ul>
+  </Container>
+</section>
