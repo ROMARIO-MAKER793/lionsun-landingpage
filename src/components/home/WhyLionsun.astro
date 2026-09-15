@@ -1,0 +1,237 @@
+---
+import {Image} from "astro:assets";
+import factoryImage from "@/assets/images/factory/lionsun-factory.png";
+
+const benefits = [
+  {
+    title: "Fabricación propia",
+    description: "Controlamos cada proceso para cuidar la calidad de nuestras medias.",
+    icon: "factory",
+  },
+  {
+    title: "Variedad de diseños",
+    description: "Modelos, colores y tallas para diferentes estilos y necesidades.",
+    icon: "design",
+  },
+  {
+    title: "Venta por mayor y menor",
+    description: "Atendemos a negocios, emprendedores y clientes finales.",
+    icon: "box",
+  },
+  {
+    title: "Envíos a todo el Perú",
+    description: "Llevamos nuestros productos a clientes en distintas partes del país.",
+    icon: "shipping",
+  },
+];
+---
+
+<section
+  class="bg-brand-950 text-white"
+  aria-labelledby="why-lionsun-title"
+>
+  <div class="grid lg:grid-cols-[0.9fr_1.1fr]">
+
+    <!-- CONTENIDO -->
+    <div
+      class="
+        flex items-center
+        px-5 py-12
+        sm:px-8 sm:py-14
+        lg:justify-end lg:px-12 lg:py-16
+      "
+    >
+      <div class="w-full max-w-xl">
+        <p
+          class="
+            text-xs font-semibold uppercase
+            tracking-[0.28em] text-accent-400
+          "
+        >
+          ¿Por qué elegir
+        </p>
+
+        <h2
+          id="why-lionsun-title"
+          class="
+            mt-2 text-4xl font-extrabold
+            uppercase leading-[0.92]
+            tracking-tight
+            sm:text-5xl
+          "
+        >
+          LIONSUN?
+        </h2>
+
+        <p
+          class="
+            mt-5 max-w-lg
+            text-sm leading-6
+            text-neutral-200
+            sm:text-base
+          "
+        >
+          Combinamos fabricación propia, variedad y atención directa
+          para ofrecer medias pensadas para cada estilo y necesidad.
+        </p>
+
+        <ul class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+          {
+            benefits.map((benefit) => (
+              <li class="flex items-start gap-4">
+
+                <span
+                  class="
+                    flex size-10 shrink-0
+                    items-center justify-center
+                    rounded-full
+                    bg-brand-800
+                    text-accent-400
+                  "
+                  aria-hidden="true"
+                >
+                  {
+                    benefit.icon === "factory" && (
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="size-5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 21h18" />
+                        <path d="M5 21V10l5 3V9l5 3V5h4v16" />
+                        <path d="M8 17h1" />
+                        <path d="M12 17h1" />
+                        <path d="M16 17h1" />
+                      </svg>
+                    )
+                  }
+
+                  {
+                    benefit.icon === "design" && (
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="size-5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="m12 3 8 5-8 13L4 8l8-5Z" />
+                        <path d="m4 8 8 4 8-4" />
+                        <path d="M12 12v9" />
+                      </svg>
+                    )
+                  }
+
+                  {
+                    benefit.icon === "box" && (
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="size-5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="m4 7 8-4 8 4-8 4-8-4Z" />
+                        <path d="M4 7v10l8 4 8-4V7" />
+                        <path d="M12 11v10" />
+                      </svg>
+                    )
+                  }
+
+                  {
+                    benefit.icon === "shipping" && (
+                      <svg
+                        viewBox="0 0 24 24"
+                        class="size-5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 6h11v11H3z" />
+                        <path d="M14 10h4l3 3v4h-7" />
+                        <circle cx="7" cy="18" r="2" />
+                        <circle cx="18" cy="18" r="2" />
+                      </svg>
+                    )
+                  }
+                </span>
+
+                <div>
+                  <h3 class="text-sm font-bold sm:text-base">
+                    {benefit.title}
+                  </h3>
+
+                  <p
+                    class="
+                      mt-0.5 max-w-md
+                      text-xs leading-5
+                      text-neutral-200
+                      sm:text-sm
+                    "
+                  >
+                    {benefit.description}
+                  </p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+
+        <a
+          href="/nosotros"
+          class="
+            mt-8 inline-flex
+            items-center gap-4
+            rounded-lg bg-white
+            px-5 py-3
+            text-sm font-bold
+            text-brand-950
+            transition
+            hover:bg-neutral-100
+            focus-visible:outline-2
+            focus-visible:outline-offset-4
+            focus-visible:outline-accent-400
+          "
+        >
+          Conoce más sobre nosotros
+
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- IMAGEN -->
+    <figure class="relative min-h-80 overflow-hidden lg:min-h-[600px]">
+      <Image
+        src={factoryImage}
+        alt="Área de producción de medias LIONSUN con máquinas textiles en funcionamiento"
+        class="absolute inset-0 h-full w-full object-cover"
+        loading="lazy"
+      />
+
+      <div
+        class="
+          pointer-events-none
+          absolute inset-0
+          bg-gradient-to-r
+          from-brand-950/25
+          via-transparent
+          to-transparent
+        "
+        aria-hidden="true"
+      >
+      </div>
+    </figure>
+
+  </div>
+</section>

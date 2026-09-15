@@ -63,6 +63,7 @@ const categories = [
             leading-[0.9] tracking-tight
             text-brand-950
             sm:text-4xl
+            lg:text-[2.5rem]
           "
         >
           Encuentra
@@ -105,14 +106,14 @@ const categories = [
       </div>
     </div>
 
-    <ul
-      class="
-        mx-auto mt-6
-        grid max-w-6xl grid-cols-1 gap-5
-        sm:grid-cols-2
-        lg:grid-cols-3
-      "
-    >
+        <ul
+        class="
+          mt-6
+          grid w-full grid-cols-1 gap-5
+          sm:grid-cols-2
+          lg:grid-cols-3 lg:gap-6
+        "
+      >
       {
         categories.map((category) => (
           <CategoryCard
