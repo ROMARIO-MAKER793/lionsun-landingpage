@@ -38,7 +38,7 @@ const benefits = [
         flex items-center
         px-5 py-12
         sm:px-8 sm:py-14
-        lg:justify-end lg:px-12 lg:py-16
+        lg:justify-end lg:px-12 lg:py-10
       "
     >
       <div class="w-full max-w-xl">
@@ -75,7 +75,7 @@ const benefits = [
           para ofrecer medias pensadas para cada estilo y necesidad.
         </p>
 
-        <ul class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
+        <ul class="mt-8 grid gap-5 sm:grid-cols-2 lg:mt-6 lg:grid-cols-1 lg:gap-3">
           {
             benefits.map((benefit) => (
               <li class="flex items-start gap-4">
@@ -190,7 +190,7 @@ const benefits = [
         <a
           href="/nosotros"
           class="
-            mt-8 inline-flex
+            mt-8 lg:mt-6  inline-flex
             items-center gap-4
             rounded-lg bg-white
             px-5 py-3
@@ -211,7 +211,7 @@ const benefits = [
     </div>
 
     <!-- IMAGEN -->
-    <figure class="relative min-h-80 overflow-hidden lg:min-h-[600px]">
+    <figure class="relative min-h-80 overflow-hidden lg:min-h-[480px]">
       <Image
         src={factoryImage}
         alt="Área de producción de medias LIONSUN con máquinas textiles en funcionamiento"
