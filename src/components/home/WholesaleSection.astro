@@ -1,0 +1,299 @@
+---
+import { Image } from "astro:assets";
+
+import Container  from "../common/Container.astro";
+import Icon from "@/components/Icon.astro";
+import warehouseImage from "@/assets/images/wholesale/lionsun-warehouse.png";
+
+const benefits = [
+  {
+    title: "Fabricación propia",
+    icon: "factory",
+  },
+  {
+    title: "Venta por mayor y menor",
+    icon: "wholesale",
+  },
+  {
+    title: "Envíos a todo el Perú",
+    icon: "shipping",
+  },
+  {
+    title: "Atención directa",
+    icon: "support",
+  },
+] as const;
+
+---
+
+<section
+  id="mayoristas"
+  class="bg-neutral-50 py-8 sm:py-10 lg:py-12"
+  aria-labelledby="wholesale-title"
+>
+  <Container>
+    <div
+      class="
+        overflow-hidden 
+        bg-white
+        lg:grid lg:grid-cols-[1.05fr_0.95fr]
+      "
+    >
+      <!-- Contenido -->
+      <div
+        class="
+          relative z-10
+          px-5 py-8
+          sm:px-8 sm:py-10
+          lg:px-10 lg:py-12
+          xl:px-12
+        "
+      >
+        <p
+          class="
+            text-[11px] font-semibold uppercase
+            tracking-[0.28em] text-brand-700
+          "
+        >
+          Compra por mayor y menor
+        </p>
+
+        <h2
+          id="wholesale-title"
+          class="
+            mt-2 max-w-xl
+            font-heading text-3xl font-black italic uppercase
+            leading-[0.95] tracking-tight text-brand-950
+            sm:text-4xl
+            lg:text-[2.7rem]
+          "
+        >
+          Medias para
+          <span class="block text-accent-500">
+            tu negocio o para ti.
+          </span>
+        </h2>
+
+        <p
+          class="
+            mt-5 max-w-xl
+            text-sm leading-6 text-neutral-600
+            sm:text-base sm:leading-7
+          "
+        >
+          Contamos con amplio stock, variedad de modelos y colores,
+          con atención directa y envíos a todo el Perú.
+        </p>
+
+        <!-- Beneficios -->
+        <ul
+          class="
+            mt-7 grid grid-cols-2
+            gap-x-4 gap-y-5
+            lg:grid-cols-4 lg:gap-0
+          "
+        >
+          {
+            benefits.map((benefit) => (
+              <li
+                class="
+                  flex min-w-0 items-center gap-2.5
+                  lg:flex-col lg:items-start
+                  lg:border-r lg:border-neutral-200
+                  lg:px-4
+                  lg:first:pl-0
+                  lg:last:border-r-0
+                "
+              >
+                <Icon
+                  name={benefit.icon}
+                  class="h-6 w-6 shrink-0 text-accent-600"
+                />
+
+                <p
+                  class="
+                    text-xs font-bold leading-tight
+                    text-brand-950
+                  "
+                >
+                  {benefit.title}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+
+        <!-- CTA -->
+        
+        <a
+        href="#contacto"
+        class="
+            mt-8 inline-flex
+            items-center justify-center gap-3
+            rounded-md bg-whatsapp-500
+            px-5 py-3.5
+            text-sm font-bold text-white
+            transition duration-300
+            hover:-translate-y-0.5
+            hover:bg-whatsapp-600
+            focus-visible:outline-2
+            focus-visible:outline-offset-4
+            focus-visible:outline-whatsapp-500
+            sm:px-6
+        "
+        aria-label="Cotizar medias por WhatsApp"
+        >
+        Cotizar por WhatsApp
+        <span aria-hidden="true">→</span>
+        </a>
+
+        </div> <!-- termina CONTENIDO -->
+
+        <!-- Transición LIONSUN móvil -->
+        <div
+        class="
+            relative h-[72px] w-full
+            overflow-hidden bg-white
+            lg:hidden
+        "
+        aria-hidden="true"
+        >
+        <!-- Plano principal -->
+        <div
+            class="absolute inset-0 bg-accent-500"
+            style="
+            clip-path: polygon(
+                0 82%,
+                100% 18%,
+                100% 100%,
+                0 100%
+            );
+            "
+        ></div>
+
+        <!-- Plano secundario -->
+        <div
+            class="
+            absolute bottom-0 right-0
+            h-full w-[68%]
+            bg-accent-600/55
+            "
+            style="
+            clip-path: polygon(
+                42% 62%,
+                100% 22%,
+                100% 100%,
+                0 100%
+            );
+            "
+        ></div>
+
+        <!-- Acento claro -->
+        <div
+            class="
+            absolute bottom-0 right-0
+            h-full w-[38%]
+            bg-accent-400/35
+            "
+            style="
+            clip-path: polygon(
+                52% 55%,
+                100% 35%,
+                100% 100%,
+                0 100%
+            );
+            "
+        ></div>
+        </div>
+        <!-- Imagen almacén -->
+        <!-- Composición visual almacén -->
+        <div
+            class="
+                relative
+                min-h-[330px]
+                overflow-hidden
+                sm:min-h-[400px]
+                lg:min-h-full
+            "
+            >
+            <!-- Fotografía -->
+            <Image
+                src={warehouseImage}
+                alt="Almacén de LIONSUN con stock de medias listas para distribución"
+                class="
+                absolute inset-0
+                h-full w-full object-cover
+                "
+                loading="lazy"
+            />
+
+
+        <!-- ========================= -->
+        <!-- GEOMETRÍA DESKTOP -->
+        <!-- ========================= -->
+
+        <!-- Plano principal -->
+        <div
+            class="
+            pointer-events-none absolute
+            inset-y-0 left-0 z-10
+            hidden w-[125px]
+            bg-accent-500
+            lg:block
+            "
+            style="
+            clip-path: polygon(
+                0 0,
+                100% 0,
+                46% 48%,
+                100% 100%,
+                0 100%
+            );
+            "
+            aria-hidden="true"
+        ></div>
+
+        <!-- Plano oscuro -->
+        <div
+            class="
+            pointer-events-none absolute
+            inset-y-0 left-0 z-20
+            hidden w-[82px]
+            bg-accent-600/65
+            lg:block
+            "
+            style="
+            clip-path: polygon(
+                0 18%,
+                100% 0,
+                45% 50%,
+                100% 100%,
+                0 82%
+            );
+            "
+            aria-hidden="true"
+        ></div>
+
+        <!-- Acento claro -->
+        <div
+            class="
+            pointer-events-none absolute
+            bottom-0 left-0 z-30
+            hidden h-[45%] w-[105px]
+            bg-accent-400/35
+            lg:block
+            "
+            style="
+            clip-path: polygon(
+                0 45%,
+                100% 0,
+                55% 100%,
+                0 100%
+            );
+            "
+            aria-hidden="true"
+        ></div>
+        </div>
+    </div>
+  </Container>
+</section>
