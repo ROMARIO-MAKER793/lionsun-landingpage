@@ -35,14 +35,54 @@ const benefits = [
         aria-hidden="true"
     ></div>
 
+  <!-- Composición geométrica móvil -->
+<div
+  class="
+    pointer-events-none absolute
+    bottom-[72px] left-0 z-0
+    h-[250px] w-full
+    overflow-hidden
+    lg:hidden
+  "
+  aria-hidden="true"
+>
+  <!-- Azul principal -->
+  <div
+    class="hero-brand-bg absolute inset-0"
+    style="clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 100%);"
+  ></div>
+
+  <!-- Plano azul secundario -->
+  <div
+    class="
+      absolute bottom-0 right-0
+      h-[78%] w-[70%]
+      bg-accent-600/45
+    "
+    style="clip-path: polygon(38% 0, 100% 18%, 100% 100%, 0 100%);"
+  ></div>
+
+  <!-- Plano azul claro -->
+  <div
+    class="
+      absolute bottom-0 right-0
+      h-[48%] w-full
+      bg-accent-400/25
+    "
+    style="clip-path: polygon(58% 0, 100% 25%, 100% 100%, 28% 100%);"
+  ></div>
+</div>
+
   <!-- Imagen del producto como capa visual -->
 <div
-  class="pointer-events-none absolute right-0 top-0 bottom-20 z-10 hidden w-[58%] lg:block"
+  class="pointer-events-none absolute bottom-[72px] left-1/2  z-10 h-[250px] w-[360px] 
+  -translate-x-1/2  sm:h-[310px] sm:w-[450px] lg:bottom-20 lg:left-auto 
+  lg:right-0 lg:top-0  lg:h-auto lg:w-[58%] lg:translate-x-0"
 >
   <Image
     src={heroSocks}
     alt=""
-    class="h-full w-full object-contain object-right-top"
+    class="h-full w-full object-contain object-bottom  lg:object-right-top"
     loading="eager"
   />
 </div>
@@ -50,7 +90,11 @@ const benefits = [
 <Container class="relative z-20">
   <!-- Contenido principal -->
   <div
-    class="flex min-h-[580px] items-center py-16 lg:w-[48%] lg:py-0 lg:-translate-x-8"
+    class=" flex min-h-[520px] items-start
+  pt-10 pb-[220px]
+  sm:min-h-[650px] sm:pt-12 sm:pb-[270px]
+  lg:min-h-[580px] lg:w-[48%]
+  lg:items-center lg:py-0 lg:-translate-x-8"
     >
    <div class="max-w-xl lg:-translate-x-16">
       <p
@@ -70,17 +114,36 @@ const benefits = [
         </span>
       </h1>
 
-      <p
-        class="mt-6 max-w-lg text-base leading-7 text-white/80 sm:text-lg"
-      >
-        Fabricamos y distribuimos medias para varón, dama y niños,
-        con variedad de diseños, colores y modelos para cada estilo
-        y necesidad.
-      </p>
+  <p
+  class="
+    mt-6 max-w-lg
+    text-[15px] font-medium leading-6 text-white/85
+    sm:text-base sm:leading-7
+    lg:text-lg lg:font-normal lg:text-white/80
+  "
+>
+  <span class="lg:hidden">
+    Fabricamos y distribuimos medias con calidad y estilo,
+    pensadas para acompañarte cómodamente en cada paso.
+  </span>
 
-      <a
+  <span class="hidden lg:inline">
+    Fabricamos y distribuimos medias para varón, dama y niños,
+    con variedad de diseños, colores y modelos para cada estilo
+    y necesidad.
+  </span>
+</p>
+
+     <a
         href="#productos"
-        class="mt-8 inline-flex items-center gap-3 rounded-md bg-white px-6 py-3.5 text-sm font-bold text-brand-950 transition duration-300 hover:-translate-y-0.5 hover:bg-neutral-100"
+        class="
+          mt-8 hidden items-center gap-3
+          rounded-md bg-white px-6 py-3.5
+          text-sm font-bold text-brand-950
+          transition duration-300
+          hover:-translate-y-0.5 hover:bg-neutral-100
+          lg:inline-flex
+        "
       >
         Ver productos
         <span aria-hidden="true">→</span>
@@ -90,20 +153,37 @@ const benefits = [
 
   <!-- Beneficios -->
   <div
-  class="relative z-20 grid border-t border-white/15 sm:grid-cols-2 lg:grid-cols-4"
->
-  {
-    benefits.map((benefit) => (
-      <div class="flex min-h-24 items-center gap-3 py-5 sm:px-5 sm:first:pl-0">
-        <Icon
-          name={benefit.icon}
-          class="h-8 w-8 shrink-0 text-accent-400"
-        />
+      class="relative z-20 grid grid-cols-4 border-t border-white/15 lg:grid-cols-4"
+    >
+      {
+        benefits.map((benefit) => (
+          <div
+      class="
+        flex min-w-0 flex-col items-center justify-center
+        gap-2 px-1 py-4 text-center
+        lg:min-h-24 lg:flex-row lg:justify-start
+        lg:gap-3 lg:px-5 lg:py-5 lg:text-left
+        lg:first:pl-0
+      "
+    >
+      <Icon
+        name={benefit.icon}
+        class="
+          h-5 w-5 shrink-0 text-accent-400
+          lg:h-8 lg:w-8
+        "
+      />
 
-        <p class="text-sm font-semibold leading-tight text-white">
-          {benefit.title}
-        </p>
-      </div>
+      <p
+        class="
+          text-[9px] font-semibold leading-tight text-white
+          sm:text-[10px]
+          lg:text-sm
+        "
+      >
+        {benefit.title}
+      </p>
+    </div>
     ))
   }
 </div>  
