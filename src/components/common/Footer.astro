@@ -1,0 +1,329 @@
+---
+const productLinks = [
+  { label: "Varón", href: "#productos" },
+  { label: "Dama", href: "#productos" },
+  { label: "Niños", href: "#productos" },
+];
+
+const companyLinks = [
+  { label: "Nosotros", href: "#nosotros" },
+  { label: "Mayoristas", href: "#mayoristas" },
+  { label: "Contacto", href: "#contacto" },
+];
+
+const socialLinks = [
+  { label: "Instagram", href: "#" },
+  { label: "Facebook", href: "#" },
+  { label: "TikTok", href: "#" },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<!-- Transición visual hacia el footer -->
+<div
+  class="
+    relative h-12
+    overflow-hidden
+    bg-brand-950
+    sm:h-14
+    lg:h-16
+  "
+  aria-hidden="true"
+>
+  <!-- Plano azul principal -->
+  <div
+    class="
+      absolute inset-y-0 right-0
+      w-[72%]
+      bg-accent-600
+    "
+    style="
+      clip-path: polygon(
+        18% 0,
+        100% 0,
+        100% 100%,
+        0 100%
+      );
+    "
+  ></div>
+
+  <!-- Plano azul secundario -->
+  <div
+    class="
+      absolute inset-y-0 right-0
+      w-[48%]
+      bg-accent-500
+    "
+    style="
+      clip-path: polygon(
+        28% 0,
+        100% 0,
+        100% 100%,
+        0 100%
+      );
+    "
+  ></div>
+
+  <!-- Acento -->
+  <div
+    class="
+      absolute inset-y-0 right-0
+      w-[24%]
+      bg-accent-400/70
+    "
+    style="
+      clip-path: polygon(
+        40% 0,
+        100% 0,
+        100% 100%,
+        0 100%
+      );
+    "
+  ></div>
+</div>
+
+<footer
+  id="contacto"
+  class="bg-[#020b14] text-white"
+  aria-label="Pie de página"
+>
+  <div class="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div
+      class="
+        grid gap-10
+        py-10
+        sm:py-12
+        lg:grid-cols-[1.4fr_0.7fr_0.7fr_1fr]
+        lg:gap-12 lg:py-14
+      "
+    >
+
+      <!-- MARCA -->
+      <div>
+        <!--
+          ESPACIO RESERVADO PARA LOGO.
+          Después reemplazaremos este bloque por <Image />.
+        -->
+        <div
+          class="
+            flex h-10 w-36
+            items-center
+            font-heading text-2xl font-black
+            tracking-tight text-white
+          "
+          aria-label="LIONSUN"
+        >
+          LIONSUN
+        </div>
+
+        <p
+          class="
+            mt-4 max-w-xs
+            text-sm leading-6
+            text-neutral-300
+          "
+        >
+          Pasos que te llevan más lejos.
+        </p>
+
+        <!-- REDES -->
+        <nav
+          class="mt-6"
+          aria-label="Redes sociales"
+        >
+          <ul class="flex flex-wrap gap-x-5 gap-y-2">
+            {
+              socialLinks.map((social) => (
+                <li>
+                  <a
+                    href={social.href}
+                    class="
+                      text-xs font-semibold
+                      text-neutral-300
+                      transition-colors
+                      hover:text-accent-400
+                    "
+                  >
+                    {social.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+
+
+      <!-- PRODUCTOS -->
+      <nav aria-labelledby="footer-products">
+        <h2
+          id="footer-products"
+          class="
+            text-xs font-bold uppercase
+            tracking-[0.18em]
+            text-white
+          "
+        >
+          Productos
+        </h2>
+
+        <ul class="mt-4 space-y-3">
+          {
+            productLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="
+                    text-sm text-neutral-300
+                    transition-colors
+                    hover:text-accent-400
+                  "
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+
+      <!-- EMPRESA -->
+      <nav aria-labelledby="footer-company">
+        <h2
+          id="footer-company"
+          class="
+            text-xs font-bold uppercase
+            tracking-[0.18em]
+            text-white
+          "
+        >
+          Empresa
+        </h2>
+
+        <ul class="mt-4 space-y-3">
+          {
+            companyLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="
+                    text-sm text-neutral-300
+                    transition-colors
+                    hover:text-accent-400
+                  "
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+
+      <!-- CONTACTO -->
+      <div>
+        <h2
+          class="
+            text-xs font-bold uppercase
+            tracking-[0.18em]
+            text-white
+          "
+        >
+          Contacto
+        </h2>
+
+        <address
+          class="
+            mt-4 space-y-3
+            text-sm not-italic
+            text-neutral-300
+          "
+        >
+          <p>
+            Lima, Perú
+          </p>
+
+          <p>
+            <a
+              href="mailto:contacto@lionsun.pe"
+              class="
+                transition-colors
+                hover:text-accent-400
+              "
+            >
+              contacto@lionsun.pe
+            </a>
+          </p>
+
+          <p>
+            <a
+              href="#"
+              class="
+                inline-flex items-center gap-2
+                font-bold text-white
+                transition-colors
+                hover:text-whatsapp-500
+              "
+              aria-label="Contactar a LIONSUN por WhatsApp"
+            >
+              WhatsApp
+              <span aria-hidden="true">→</span>
+            </a>
+          </p>
+        </address>
+      </div>
+
+    </div>
+
+
+    <!-- BARRA INFERIOR -->
+    <div
+      class="
+        flex flex-col gap-3
+        border-t border-white/10
+        py-5
+        text-xs text-neutral-400
+        sm:flex-row
+        sm:items-center sm:justify-between
+      "
+    >
+      <p>
+        © {currentYear} LIONSUN. Todos los derechos reservados.
+      </p>
+
+      <nav aria-label="Enlaces legales">
+        <ul class="flex gap-5">
+          <li>
+            <a
+              href="/privacidad"
+              class="
+                transition-colors
+                hover:text-white
+              "
+            >
+              Privacidad
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="/terminos"
+              class="
+                transition-colors
+                hover:text-white
+              "
+            >
+              Términos
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+  </div>
+</footer>
