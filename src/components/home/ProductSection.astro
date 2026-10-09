@@ -1,4 +1,5 @@
 ---
+import { getWhatsAppLink } from "@/config/contact";
 import Container from "@/components/common/Container.astro";
 import ProductCard from "@/components/home/ProductCard.astro";
 
@@ -11,7 +12,6 @@ const products = [
   {
     name: "Media deportiva",
     category: "Varón",
-    href: "#",
     badge: "Destacado",
     image: productMenCrew,
     imageAlt: "Medias deportivas LIONSUN para varón en diferentes colores",
@@ -19,7 +19,6 @@ const products = [
   {
     name: "Media casual dama",
     category: "Dama",
-    href: "#",
     badge: "Nuevo",
     image: productWomenCrew,
     imageAlt: "Medias LIONSUN para dama en diferentes colores",
@@ -27,14 +26,12 @@ const products = [
   {
     name: "Media juvenil",
     category: "Niños",
-    href: "#",
     image: productWomenLion,
     imageAlt: "Medias LION en diferentes colores",
   },
   {
     name: "Media urbana",
     category: "Varón",
-    href: "#",
     image: productMenAnkle,
     imageAlt: "Medias tobilleras LIONSUN para varón en diferentes colores",
   },
@@ -79,18 +76,18 @@ const products = [
       </div>
 
       <a
-        href="#productos-destacados"
+        href={getWhatsAppLink()}
         class="
           inline-flex items-center gap-1.5
-          text-xs font-semibold text-accent-600
-          transition hover:text-accent-500
+          text-xs font-semibold text-brand-700
+          transition hover:text-brand-800
           focus-visible:outline-2
           focus-visible:outline-offset-4
           focus-visible:outline-accent-500
           md:mb-1
         "
       >
-        Ver todos los productos
+        Consultar más productos
 
         <svg
           viewBox="0 0 24 24"
@@ -119,7 +116,7 @@ const products = [
     <ProductCard
       name={product.name}
       category={product.category}
-      href={product.href}
+      href={getWhatsAppLink({ kind: "product", name: product.name })}
       badge={product.badge}
       image={product.image}
       imageAlt={product.imageAlt}

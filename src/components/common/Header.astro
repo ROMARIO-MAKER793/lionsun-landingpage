@@ -1,17 +1,17 @@
 ---
 import Container from '@/components/common/Container.astro';
+import { getWhatsAppLink } from '@/config/contact';
 
 const navigation = [
-  { label: "Productos", href: "#productos" },
+  { label: "Productos", href: "#productos-destacados" },
   { label: "Nosotros", href: "#nosotros" },
   { label: "Mayoristas", href: "#mayoristas" },
-  { label: "Blog", href: "/blog" },
   { label: "Contacto", href: "#contacto" },
 ];
 ---
 
 
-<header class="border-b border-neutral-200 bg-white">
+<header data-lionsun-header class="border-b border-neutral-200 bg-white">
   <Container class="flex h-20 items-center justify-between">
 
     <!-- Logo -->
@@ -32,7 +32,7 @@ const navigation = [
         navigation.map((item) => (
           <a
             href={item.href}
-            class="text-sm font-semibold text-brand-950 transition-colors hover:text-accent-500"
+            class="text-sm font-semibold text-brand-950 transition-colors hover:text-brand-700"
           >
             {item.label}
           </a>
@@ -43,20 +43,25 @@ const navigation = [
     <!-- Actions -->
     <div class="flex items-center gap-2 sm:gap-4">
       <a
-        href="#productos"
-        class="hidden text-brand-950 transition-colors hover:text-accent-500 sm:inline-flex"
-        aria-label="Buscar productos"
+        href="#productos-destacados"
+        class="hidden text-brand-950 transition-colors hover:text-brand-700 sm:inline-flex"
+        aria-label="Ir a productos destacados"
       >
-        <span aria-hidden="true">⌕</span>
+        <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7" rx="1" />
+          <rect x="14" y="3" width="7" height="7" rx="1" />
+          <rect x="3" y="14" width="7" height="7" rx="1" />
+          <rect x="14" y="14" width="7" height="7" rx="1" />
+        </svg>
       </a>
 
       <a
-        href="#contacto"
+        href={getWhatsAppLink({ kind: "general" })}
         class="
           inline-flex items-center justify-center
           rounded-md bg-whatsapp-500
           px-3 py-2
-          text-xs font-bold text-white
+          text-xs font-bold text-brand-950
           transition-colors hover:bg-whatsapp-600
           sm:px-4 sm:py-2.5 sm:text-sm
           lg:px-5 lg:py-3
@@ -71,11 +76,69 @@ const navigation = [
       <button
         type="button"
         class="inline-flex items-center justify-center text-brand-950 lg:hidden"
-        aria-label="Abrir menú"
+        aria-label="Abrir menú" data-menu-toggle aria-expanded="false" aria-controls="mobile-navigation"
       >
         <span class="text-2xl" aria-hidden="true">☰</span>
       </button>
     </div>
 
   </Container>
+<nav id="mobile-navigation" hidden aria-label="Navegación móvil" class="border-t border-neutral-200 lg:hidden">
+  <Container class="flex flex-col gap-1 py-3">
+    {navigation.map((item) => (<a href={item.href} class="rounded-md px-3 py-3 text-sm font-semibold text-brand-950 hover:bg-neutral-100">{item.label}</a>))}
+  </Container>
+</nav>
 </header>
+<style>
+  [data-lionsun-header] :is(a, button):focus-visible {
+    outline: 2px solid var(--brand-950);
+    outline-offset: 4px;
+  }
+</style>
+<script>
+  const header = document.querySelector<HTMLElement>('[data-lionsun-header]');
+  const toggle = header?.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = header?.querySelector<HTMLElement>('#mobile-navigation');
+  if (header && toggle && menu) {
+    const setOpen = (open: boolean, restoreFocus = false) => {
+      menu.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      if (restoreFocus) toggle.focus();
+    };
+    toggle.addEventListener('click', () => setOpen(menu.hidden));
+    header.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !menu.hidden) {
+        event.preventDefault();
+        setOpen(false, true);
+      }
+    });
+    menu.addEventListener('click', (event) => {
+      const link = event.target instanceof Element ? event.target.closest('a') : null;
+      if (!link) return;
+      setOpen(false);
+      const href = link.getAttribute('href');
+      const destination = href?.startsWith('#') ? document.getElementById(href.slice(1)) : null;
+      if (destination) {
+        const previousTabindex = destination.getAttribute('tabindex');
+        destination.setAttribute('tabindex', '-1');
+        destination.focus({ preventScroll: true });
+        destination.addEventListener('blur', () => {
+          if (previousTabindex === null) destination.removeAttribute('tabindex');
+          else destination.setAttribute('tabindex', previousTabindex);
+        }, { once: true });
+      }
+    });
+    document.addEventListener('click', (event) => {
+      if (!menu.hidden && event.target instanceof Node && !header.contains(event.target)) setOpen(false);
+    });
+    const desktop = window.matchMedia('(min-width: 64rem)');
+    desktop.addEventListener('change', () => {
+      if (desktop.matches) {
+        const focusInsideMenu = menu.contains(document.activeElement);
+        setOpen(false);
+        if (focusInsideMenu) header.querySelector<HTMLAnchorElement>('a[href="/"]')?.focus();
+      }
+    });
+  }
+</script>

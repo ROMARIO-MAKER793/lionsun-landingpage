@@ -1,5 +1,7 @@
 ---
 import {Image} from "astro:assets";
+import { getWhatsAppLink } from "@/config/contact";
+import Icon from "@/components/Icon.astro";
 import factoryImage from "@/assets/images/factory/lionsun-factory.png";
 
 const benefits = [
@@ -22,7 +24,7 @@ const benefits = [
 ] as const;
 ---
 
-<section
+<section id="nosotros"
   class="bg-brand-950 text-white"
   aria-labelledby="why-lionsun-title"
 >
@@ -70,7 +72,7 @@ const benefits = [
             para ofrecer calidad, variedad y atención cercana.
           </p>
 
-        <ul class="mt-6 grid grid-cols-2 gap-x-4 gap-y-4lg:mt-5 lg:gap-x-6 lg:gap-y-3">
+        <ul class="mt-6 grid grid-cols-2 gap-x-4 gap-y-4 lg:mt-5 lg:gap-x-6 lg:gap-y-3">
           {
             benefits.map((benefit) => (
                       <li class="flex min-w-0 items-center gap-3">
@@ -85,7 +87,7 @@ const benefits = [
             "
             aria-hidden="true"
           >
-            <!-- conserva aquí exactamente tus SVG actuales -->
+            <Icon name={benefit.icon} class="size-5" />
           </span>
 
           <h3 class="text-xs font-bold leading-tight sm:text-sm">
@@ -98,7 +100,7 @@ const benefits = [
         </ul>
 
         <a
-          href="/nosotros"
+          href={getWhatsAppLink()}
           class="
             mt-6 lg:mt-5  inline-flex
             items-center gap-4
@@ -113,7 +115,7 @@ const benefits = [
             focus-visible:outline-accent-400
           "
         >
-          Conoce más sobre nosotros
+          Consulta sobre LIONSUN
 
           <span aria-hidden="true">→</span>
         </a>

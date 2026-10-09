@@ -1,8 +1,9 @@
 ---
+import { getWhatsAppLink } from "@/config/contact";
 const productLinks = [
-  { label: "Varón", href: "#productos" },
-  { label: "Dama", href: "#productos" },
-  { label: "Niños", href: "#productos" },
+  { label: "Varón", href: getWhatsAppLink({ kind: "category", category: "Varón" }) },
+  { label: "Dama", href: getWhatsAppLink({ kind: "category", category: "Dama" }) },
+  { label: "Niños", href: getWhatsAppLink({ kind: "category", category: "Niños" }) },
 ];
 
 const companyLinks = [
@@ -12,9 +13,9 @@ const companyLinks = [
 ];
 
 const socialLinks = [
-  { label: "Instagram", href: "#" },
-  { label: "Facebook", href: "#" },
-  { label: "TikTok", href: "#" },
+  { label: "Instagram" },
+  { label: "Facebook" },
+  { label: "TikTok" },
 ];
 
 const currentYear = new Date().getFullYear();
@@ -129,8 +130,9 @@ const currentYear = new Date().getFullYear();
           Pasos que te llevan más lejos.
         </p>
 
-        <!-- REDES -->
+        <!-- Redes pendientes: conservar estructura oculta hasta confirmar las URLs. -->
         <nav
+          hidden
           class="mt-6"
           aria-label="Redes sociales"
         >
@@ -138,17 +140,9 @@ const currentYear = new Date().getFullYear();
             {
               socialLinks.map((social) => (
                 <li>
-                  <a
-                    href={social.href}
-                    class="
-                      text-xs font-semibold
-                      text-neutral-300
-                      transition-colors
-                      hover:text-accent-400
-                    "
-                  >
-                    {social.label}
-                  </a>
+                  <span class="text-xs font-semibold text-neutral-300" title="URL oficial pendiente de confirmar">
+                    {social.label}<span class="sr-only"> (URL oficial pendiente de confirmar)</span>
+                  </span>
                 </li>
               ))
             }
@@ -262,7 +256,7 @@ const currentYear = new Date().getFullYear();
 
           <p>
             <a
-              href="#"
+              href={getWhatsAppLink()}
               class="
                 inline-flex items-center gap-2
                 font-bold text-white
@@ -296,34 +290,24 @@ const currentYear = new Date().getFullYear();
         © {currentYear} LIONSUN. Todos los derechos reservados.
       </p>
 
-      <nav aria-label="Enlaces legales">
+      <div hidden aria-label="Información legal pendiente">
         <ul class="flex gap-5">
           <li>
-            <a
-              href="/privacidad"
-              class="
-                transition-colors
-                hover:text-white
-              "
-            >
-              Privacidad
-            </a>
+            <span title="Contenido pendiente de publicar">Privacidad<span class="sr-only"> (contenido pendiente de publicar)</span></span>
           </li>
 
           <li>
-            <a
-              href="/terminos"
-              class="
-                transition-colors
-                hover:text-white
-              "
-            >
-              Términos
-            </a>
+            <span title="Contenido pendiente de publicar">Términos<span class="sr-only"> (contenido pendiente de publicar)</span></span>
           </li>
         </ul>
-      </nav>
+      </div>
     </div>
 
   </div>
 </footer>
+<style>
+  footer a:focus-visible {
+    outline: 2px solid var(--accent-400);
+    outline-offset: 4px;
+  }
+</style>

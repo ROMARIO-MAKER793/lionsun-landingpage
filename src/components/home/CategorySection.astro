@@ -1,4 +1,5 @@
 ---
+import { getWhatsAppLink } from "@/config/contact";
 import Container from "@/components/common/Container.astro";
 import CategoryCard from "@/components/home/CategoryCard.astro";
 import categoryMen from "@/assets/images/categories/category-men.png"
@@ -9,7 +10,6 @@ const categories = [
    {
     title: "Varón",
     description: "Deportivas, casuales y más",
-    href: "#",
     image: categoryMen,
     imageAlt:
       "Media deportiva LIONSUN para varón combinada con zapatilla blanca",
@@ -17,7 +17,6 @@ const categories = [
   {
     title: "Dama",
     description: "Comodidad y estilo",
-    href: "#",
     image: categoryWomen,
     imageAlt:
       "Media LIONSUN para dama en tonos blanco y rosado con zapatilla deportiva",
@@ -25,7 +24,6 @@ const categories = [
   {
     title: "Niños",
     description: "Para cada aventura",
-    href: "#",
     image: categoryKids,
     imageAlt:
       "Media deportiva LIONSUN para niños en color blanco y gris",
@@ -77,17 +75,17 @@ const categories = [
         </p>
 
         <a
-          href="#categorias"
+          href={getWhatsAppLink()}
           class="
             mt-1.5 inline-flex items-center gap-1.5
-            text-xs font-semibold text-accent-600
-            transition hover:text-accent-500
+            text-xs font-semibold text-brand-700
+            transition hover:text-brand-800
             focus-visible:outline-2
             focus-visible:outline-offset-4
             focus-visible:outline-accent-500
           "
         >
-          Ver todas las categorías
+          Consultar categorías
 
           <svg
             viewBox="0 0 24 24"
@@ -119,7 +117,7 @@ const categories = [
           <CategoryCard
             title={category.title}
             description={category.description}
-            href={category.href}
+            href={getWhatsAppLink({ kind: "category", category: category.title })}
             image={category.image}
             imageAlt={category.imageAlt}
           />

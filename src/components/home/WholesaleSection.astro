@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { getWhatsAppLink } from "@/config/contact";
 
 import Container  from "../common/Container.astro";
 import Icon from "@/components/Icon.astro";
@@ -126,19 +127,19 @@ const benefits = [
         <!-- CTA -->
         
         <a
-        href="#contacto"
+        href={getWhatsAppLink({ kind: "wholesale" })}
         class="
             mt-8 inline-flex
             items-center justify-center gap-3
             rounded-md bg-whatsapp-500
             px-5 py-3.5
-            text-sm font-bold text-white
+            text-sm font-bold text-brand-950
             transition duration-300
             hover:-translate-y-0.5
             hover:bg-whatsapp-600
             focus-visible:outline-2
             focus-visible:outline-offset-4
-            focus-visible:outline-whatsapp-500
+            focus-visible:outline-brand-950
             sm:px-6
         "
         aria-label="Cotizar medias por WhatsApp"

@@ -44,3 +44,23 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## Contacto comercial LIONSUN
+
+La configuración está centralizada en `src/config/contact.ts`. El número es temporal,
+con vigencia prevista hasta diciembre de 2026; confirmar su continuidad antes de enero de 2027.
+Para cambiarlo, editar solo `contact.whatsappNumber` con el número internacional
+(solo dígitos, sin `+` ni espacios) y actualizar `whatsappValidity`.
+No repetir el número en los componentes.
+
+`getWhatsAppLink()` genera una consulta general. También acepta:
+
+- `{ kind: "wholesale" }` para cotización mayorista.
+- `{ kind: "category", category: "Varón" }` para una categoría.
+- `{ kind: "product", name: "Media deportiva", code: "CODIGO-REAL" }` para un producto;
+  el código es opcional y debe corresponder al catálogo real.
+
+Los mensajes se codifican con `encodeURIComponent`. Los enlaces `https://wa.me/`
+son válidos para móvil y escritorio; la apertura depende de WhatsApp/app/web del usuario.
+En este primer bloque la función queda preparada: su conexión a los CTA y tarjetas
+se realizará en la siguiente etapa aprobada.

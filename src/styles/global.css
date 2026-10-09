@@ -160,3 +160,25 @@ h5,
 h6 {
   font-family: var(--family-heading);
 }
+/* Respect motion preferences while preserving static layout transforms. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  a[class*="hover:-translate"]:hover,
+  article[class*="hover:-translate"]:hover {
+    translate: none !important;
+  }
+
+  .group:hover img[class*="group-hover:scale-"] {
+    scale: 1 !important;
+  }
+}

@@ -1,6 +1,6 @@
 ---
 interface Props {
-  name: "factory" | "wholesale" | "shipping" | "support";
+  name: "factory" | "wholesale" | "shipping" | "support" | "design" | "box";
   class?: string;
 }
 
@@ -79,6 +79,34 @@ const { name, class: className = "h-8 w-8" } = Astro.props;
     >
       <path d="M4 5h16v11H9l-5 4V5Z" />
       <path d="M8 10h8M8 13h5" />
+    </svg>
+  )
+}
+{
+  (name === "design" || name === "box") && (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.7"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class={className}
+      aria-hidden="true"
+    >
+      {name === "design" ? (
+        <>
+          <path d="m12 3 8 5-8 13L4 8l8-5Z" />
+          <path d="m4 8 8 4 8-4" />
+          <path d="M12 12v9" />
+        </>
+      ) : (
+        <>
+          <path d="m4 7 8-4 8 4-8 4-8-4Z" />
+          <path d="M4 7v10l8 4 8-4V7" />
+          <path d="M12 11v10" />
+        </>
+      )}
     </svg>
   )
 }
